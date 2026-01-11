@@ -28,3 +28,5 @@ def test_pipeline_happy_path(spark):
 
     assert len(top) == 2
     assert top[0]["driver"] in ("Hamilton", "Verstappen", "Leclerc")
+    assert top[0]["driver"] == "Hamilton"
+    assert top[1]["driver"] == "Verstappen"
