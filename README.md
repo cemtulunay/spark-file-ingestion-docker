@@ -41,17 +41,22 @@ Only the **final reduced result (top N drivers)** is collected to the driver for
 pyspark_ingestion/
   io/
     read.py            # Spark CSV ingestion
+    write.py           # Spark CSV ingestion
   transforms/
     clean.py           # Validation and aggregations
   utils/
     spark.py           # SparkSession creation
     logging.py         # Logging setup
-  cli.py               # Spark CLI entry point
+  jobs /
+    main_job.py        # main
 tests/
-  test_transforms.py
+  test_clean.py
 data/
   lap_times.csv
 requirements.txt
+pyproject.toml
+docker-compose.yml
+Dockerfile
 README.md
 ```
 
