@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  spark-job:
+    image: pyspark-ingestion:local
+    command: >
+      python -m pyspark_ingestion.jobs.main_job
+      --master "local[*]"
+      --input data/lap_times.csv
+    volumes:
+      - ./data:/app/data
