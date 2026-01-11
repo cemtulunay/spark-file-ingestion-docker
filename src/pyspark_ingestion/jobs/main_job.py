@@ -79,6 +79,7 @@ def main() -> None:
 
         # Collect the small ranked result to driver JSON output
         rows = top_df.collect()
+        print("hello test_feature added here")
 
         output = [
             {
