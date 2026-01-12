@@ -16,5 +16,3 @@ src/spark_file_ingestion.egg-info/SOURCES.txt
 src/spark_file_ingestion.egg-info/dependency_links.txt
 src/spark_file_ingestion.egg-info/top_level.txt
 tests/test_clean.py
-tests/test_processor.py
-tests/test_reader.py

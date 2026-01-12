@@ -80,6 +80,7 @@ def main() -> None:
         # Collect the small ranked result to driver JSON output
         rows = top_df.collect()
         print("hello test_feature added here")
+        print("hello test_feature added pull request2")
 
         output = [
             {
