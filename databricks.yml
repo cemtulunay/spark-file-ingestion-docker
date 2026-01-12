@@ -1,0 +1,49 @@
+bundle:
+  name: f1-lap-times
+
+variables:
+  input_path:
+    default: "dbfs:/FileStore/f1/lap_times.csv"
+
+  n:
+    default: "3"
+
+  # Recommended if your CLI supports writing output
+  output_path:
+    default: "dbfs:/FileStore/f1/output/top_drivers_json"
+
+targets:
+  test:
+    default: true
+    workspace:
+      #host: ${DATABRICKS_HOST}
+      host: "https://dbc-c71e3b2d-1266.cloud.databricks.com/"
+
+resources:
+  jobs:
+    f1_lap_times_job:
+      name: f1_lap_times_job
+
+      tasks:
+        - task_key: run_f1
+          new_cluster:
+            spark_version: "14.3.x-scala2.12"
+            node_type_id: "i3.xlarge"
+            num_workers: 1
+
+          python_wheel_task:
+            package_name: pyspark-ingestion
+            entry_point: pyspark_ingestion.cli
+            parameters:
+              - --input
+              - ${var.input_path}
+              - --n
+              - ${var.n}
+
+              # If your CLI supports these, keep them:
+              # - --output-path
+              # - ${var.output_path}
+
+          libraries:
+            #- whl: ./dist/*.whl
+            - whl: /Volumes/spark_test/test/wheel_files/pyspark_ingestion.whl
